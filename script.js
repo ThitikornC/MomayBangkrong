@@ -2659,9 +2659,9 @@ async function markAllAsRead() {
 // อัปเดต badge และสั่น bell icon
 function updateBadge(count) {
   if (!bellBadge || !bellIcon) return;
-  // Update badge text and visibility
-  bellBadge.textContent = count > 0 ? String(count) : '';
-  bellBadge.style.display = count > 0 ? 'inline-block' : 'none';
+  // Keep badge hidden regardless of unread count (UI requested)
+  bellBadge.textContent = '';
+  bellBadge.style.display = 'none';
   
   // ถ้ามี notification ใหม่ ให้สั่น bell icon
   if (count > 0) shakeBellIcon();
@@ -2780,9 +2780,9 @@ function shakeKwangIcon() {
 // อัปเดตฟังก์ชัน updateBadge เพื่อสั่น icon ตาม type
 function updateBadgeWithShake(count, latestType) {
   if (!bellBadge || !bellIcon) return;
-  // Update badge text and visibility
-  bellBadge.textContent = count > 0 ? String(count) : '';
-  bellBadge.style.display = count > 0 ? 'inline-block' : 'none';
+  // Keep badge hidden regardless of unread count (UI requested)
+  bellBadge.textContent = '';
+  bellBadge.style.display = 'none';
 
   if (count > 0) {
     shakeBellIcon();
