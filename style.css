@@ -45,18 +45,6 @@ body {
   z-index: 1;              /* ให้เนื้อหาอยู่เหนือ pseudo-element */
 }
 
-/*.Main_Container,
-.Main_Container2,
-.Realtime_Container,
-.ClientName_Container,
-.ElectricalBill_Container,
-.Floor_Container {
-  box-sizing: border-box;
-  padding-left: 10%;
-  padding-right: 10%;
-}*/
-
-
 /*สีพิ้นหลัง*/
 body::before,
 body::after {
@@ -96,10 +84,10 @@ body::after {
 } 
 /* ================= กล่อง Client และ Electrical ================= */
 .ClientName_Container {
-  width: 180px;   /* ขนาดกรอบเดิม */
-  max-height: 107px;  /* เพิ่มสูงให้เท่าฝั่งขวา */
+  width: 180px;  
+  max-height: 120px;  
   height: auto;
-  font-size: 12px;
+  font-size: 12px;/*ปรับขนาดชื่อลูกค้า ,ลำดับลูกค้า ,เลขที่สัญญา,วันที่ติดตั้ง,วันหมดอายุ*/
   font-weight: bold;  /* หนา */
   text-align: left;
   box-sizing: border-box;
@@ -138,25 +126,20 @@ body::after {
   transform: translateZ(0);
   transition: all 0.3s ease;
 }
-
-/* mobile ClientName sizing — consolidated into final override at end of file */
-
-/* Ensure all text inside the client box is left-aligned (override other rules) */
 .ClientName_Container, .ClientName_Container * {
   text-align: left ;
 }
 
 
 .ElectricalBill_Container {
-  width: 100%;    /* เต็มความกว้างของ parent */
-  height: 45px;   /* ลดครึ่งนึง */
+  width: 100%; 
+  height: 60px; 
   font-size: 12px;
-  font-weight: 700;  /* หนาขึ้น */
+  font-weight: 700; 
   text-align: center;
   box-sizing: border-box;
   color: #000000;
 
-  /* Gradient background แทน PNG */
   background: linear-gradient(
     180deg,
     #f8f6f0 0%,
@@ -165,9 +148,8 @@ body::after {
     #f5f0e5 100%
   );
 
-  /* ขอบโค้งเดิม แต่เพิ่มความหนาและสีใหม่ */
-  border-radius: 10px;      /* ขอบโค้งเดิม */
-  border: 6px solid #74640a; /* ความหนาและสีใหม่ */
+  border-radius: 10px; 
+  border: 6px solid #74640a; 
 
   /* เงาและ shadow */
   box-shadow: 
@@ -180,7 +162,6 @@ body::after {
     0 1px 0 rgba(255, 255, 255, 0.3),
     0 -1px 0 rgba(0, 0, 0, 0.1);
 
-  /* Layout */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -188,7 +169,6 @@ body::after {
   padding: 4px 10px;
   margin-left: 0;
 
-  /* Animation / Transition */
   position: relative;
   transform: translateZ(0);
   transition: all 0.3s ease;
@@ -203,7 +183,6 @@ body::after {
   box-sizing: border-box;
   color: #fff;
 
-  /* Gradient background แทน PNG */
   background: linear-gradient(
     180deg,
     #f8f6f0 0%,
@@ -212,7 +191,6 @@ body::after {
     #f5f0e5 100%
   );
 
-  /* Border + shadow ด้านนอก */
   border-radius: 10px;
   border: 6px solid #74640a;
   box-shadow: 
@@ -220,7 +198,6 @@ body::after {
     -8px 6px #3b3305,
     0 0 20px rgba(255, 230, 160, 0.55);
 
-  /* ข้อความเงา */
   text-shadow: 
     0 1px 0 rgba(255, 255, 255, 0.3),
     0 -1px 0 rgba(0, 0, 0, 0.1);
@@ -232,7 +209,6 @@ body::after {
   padding: 15px 15px 5px 15px;
   position: relative;
 
-  /* ไม่จำกัด overflow เพื่อให้ shadow ด้านนอกเห็น */
   overflow: visible;
 
   margin-bottom: 10px;
@@ -287,8 +263,6 @@ body::after {
   min-width: 80px;
   box-sizing: border-box;
 }
-
-/* Room Selector */
 .room-selector-wrap {
   position: relative;
   display: inline-flex;
@@ -350,18 +324,15 @@ body::after {
 .room-option + .room-option {
   border-top: 1px solid rgba(116, 100, 10, 0.15);
 }
-
-
 .Floor_Container {
-  width: 300px;   /* ขนาดเดิม */
-  height: 80px;   /* ขนาดเดิม */
+  width: 300px;   
+  height: 80px;   
   font-size: 12px;
-  font-weight: 700;  /* หนาขึ้น */
+  font-weight: 700;  
   text-align: center;
   box-sizing: border-box;
   color: #fff;
 
-  /* Gradient background แทน PNG */
   background: linear-gradient(
     180deg,
     #f8f6f0 0%,
@@ -370,22 +341,18 @@ body::after {
     #f5f0e5 100%
   );
 
-  /* ขอบโค้ง + ความหนาและสี */
   border-radius: 10px;
   border: 6px solid #74640a;
 
-  /* เงาและ shadow */
   box-shadow: 
     1px 1px 0 #000,
     -8px 6px #3b3305,
     0 0 20px rgba(255, 230, 160, 0.55);
 
-  /* ข้อความเงา */
   text-shadow: 
     0 1px 0 rgba(255, 255, 255, 0.3),
     0 -1px 0 rgba(0, 0, 0, 0.1);
 
-  /* Layout */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -396,21 +363,19 @@ body::after {
   padding: 15px;
   z-index: 2000;
 
-  /* Animation / Transition */
   transform: translateZ(0);
   transition: all 0.3s ease;
 }
 
 
-
 /* ================= Realtime Container ================= */
 .Realtime_Container {
-  width: 355px;  /* ปรับให้เท่ากับ Main_Container */
+  width: 355px;  
   max-width: calc(100% - 16px);
   height: auto;
   padding: 10px 6px 10px 2px;
-  position: relative;  /* เพื่อให้ canvas อยู่ภายใน container */
-  z-index: 1;          /* ต่ำสุด เพื่อไม่บังปุ่ม */
+  position: relative;  
+  z-index: 1;          
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -418,7 +383,6 @@ body::after {
   overflow: hidden;
   box-sizing: border-box;
 
-  /* Gradient background - เหมือน Meter */
   background: linear-gradient(
     180deg,
     #f8f6f0 0%,
@@ -427,11 +391,9 @@ body::after {
     #f5f0e5 100%
   );
   
-  /* ขอบโค้ง + สไตล์เหมือน Meter */
   border-radius: 10px;      
   border: 6px solid #74640a;
   
-  /* เงาแบบ Meter */
   box-shadow: 
     1px 1px 0 #000,
     -5px 5px #3b3305,
@@ -440,23 +402,21 @@ body::after {
   margin-bottom: 10px;
 }
 
-
 /* ================= Bottom Info ================= */
 .Bottom_info {
-  width: 200px;         /* กำหนดความกว้างของกล่อง */
-  height: auto;         /* ความสูงปรับตามรูป */
-  display: flex;        /* ใช้ flex จัดตำแหน่ง */
-  justify-content: center;  /* กึ่งกลางแนวนอน */
-  align-items: center;      /* กึ่งกลางแนวตั้ง */
+  width: 200px;         
+  height: auto;         
+  display: flex;        
+  justify-content: center;  
+  align-items: center;      
 }
 
 .Bottom_info img {
-  max-width: 100%;      /* ปรับขนาดรูปไม่เกินกล่อง */
-  height: auto;         /* รักษาอัตราส่วน */
+  max-width: 100%;      
+  height: auto;         
   display: block;
 }
 
-/* Move version label slightly down */
 .Bottom_info .Version {
   margin-top: 12px;
 }
@@ -480,7 +440,7 @@ body::after {
   white-space: nowrap;
   margin-left: 10px;
   position: relative;
-  left: 10px;  /* เลื่อนซ้าย 40px (ปรับค่าตามต้องการ) */
+  left: 10px; 
 }
 
 /* วันที่ซ้าย */
@@ -488,12 +448,11 @@ body::after {
   position: relative;
   width: 82%;
   max-width: 360px;
-  /* let content determine height and center vertically */
   height: auto;
 
   display: flex;
   flex-direction: row;
-  align-items: center; /* vertically center header content */
+  align-items: center; 
   justify-content: flex-start;
   gap: 0px;
   flex-wrap: nowrap;
@@ -518,15 +477,15 @@ body::after {
     0 1px 0 rgba(255, 255, 255, 0.3),
     0 -1px 0 rgba(0, 0, 0, 0.1);
 
-  padding: 12px 0 6px 15px; /* balanced padding */
-  margin-top: 0 ; /* allow flex centering to control vertical position */
+  padding: 12px 0 6px 15px;
+  margin-top: 0 ; 
   margin-left: -0px;
   margin-bottom: 6px;
 
   transform: translateZ(0);
   transition: all 0.3s ease;
 
-  overflow: hidden; /* ✅ เพิ่มเพื่อซ่อนส่วนเกิน */
+  overflow: hidden;
 }
 
 /* ✅ ตัววิ่ง */
@@ -537,7 +496,6 @@ body::after {
   animation: marquee 12s linear infinite;
 }
 
-/* ✅ Animation */
 @keyframes marquee {
   0% { transform: translateX(100%); }
   100% { transform: translateX(-200%); }
@@ -549,15 +507,13 @@ body::after {
 #weather {
   margin: 0;
   padding: 0;
-  display: flex;           /* เปิด Flexbox */
-  justify-content: center; /* จัดกึ่งกลางแนวนอน */
-  align-items: center;     /* ถ้าต้องการกึ่งกลางแนวตั้งด้วย */
-  height: 100%;            /* กำหนดความสูงให้ Flexbox ทำงาน */
+  display: flex;           
+  justify-content: center; 
+  align-items: center;    
+  height: 100%;            
 }
 
-/* Align 'Momay' baseline with the date labels */
 #weather {
-  /* prefer baseline alignment for mixed-size inline children */
   align-items: baseline ;
 }
 #weather span,
@@ -576,7 +532,6 @@ body::after {
   height: auto;
   padding: 10px;
 
-  /* Gradient background */
   background: linear-gradient(
     180deg,
     #f8f6f0 0%,
@@ -585,21 +540,17 @@ body::after {
     #f5f0e5 100%
   );
 
-  /* ขอบโค้ง + ความหนาและสี */
   border-radius: 10px;      
   border: 6px solid #74640a; 
 
-  /* เงาและ shadow */
   box-shadow: 
     0 0 20px rgba(255, 230, 160, 0.55);
 
-  /* Layout */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 
-  /* Animation / Transition */
   transform: translateZ(0);
   transition: all 0.3s ease;
 }
@@ -608,7 +559,6 @@ body::after {
   font-size: 14px;
   margin: 0;
 
-  /* ข้อความเงา */
   text-shadow: 
     0 1px 0 rgba(255, 255, 255, 0.3),
     0 -1px 0 rgba(0, 0, 0, 0.1);
@@ -618,20 +568,18 @@ body::after {
 }
 
 #Date {
-  /* ป้องกันการขึ้นบรรทัดใหม่ */
 font-size: 14px;
   color: #000000;
     margin: 0px;
     
 }
-/* กลุ่มไอคอนขวา */
 #Icons_group {
   position: absolute;
   display: flex;
   flex-direction: row;
-  gap: 2px;         /* ระยะห่างระหว่างไอคอน */
+  gap: 2px;         
   align-items: flex-end;
-  margin-left: 160px; /* ขยับมาทางซ้าย */
+  margin-left: 160px; 
   margin-bottom: 10px; 
 }
 
@@ -664,7 +612,6 @@ font-size: 14px;
   width: 45%;
 }
 
-/* Force both boxes in right column to be same width */
 .top-right-col > #icons-frame,
 .top-right-col > .ElectricalBill_Container {
   width: 100% ;
@@ -674,16 +621,13 @@ font-size: 14px;
 }
 
 
-/* ไอคอนทั่วไป */
 .Navbar div img {
-
   cursor: pointer;
   display: block;
   object-fit: contain;
   transition: transform 0.2s, opacity 0.2s;
 }
 
-/* ปรับขนาดเฉพาะไอคอน */
 #RoomBooking_icon {
   position: absolute;
   bottom: 0px;
@@ -857,7 +801,6 @@ font-size: 14px;
   box-shadow: inset 0 1px 0 rgba(255,255,255,0.6), 0 2px 0 #3b3305;
 }
 
-/* Hover / Active */
 .Navbar div img:hover  { transform: scale(1.1); opacity: 0.9; }
 .Navbar div img:active { transform: scale(0.95); opacity: 0.8; }
 
@@ -871,15 +814,13 @@ font-size: 14px;
 }
 
 #Main_Picinfo img {
-  max-width: 65px;      /* ปรับสเกลให้พอดีกับ container */
   height: auto;
 }
 
-/* Meter */
 #Meter_Pic {
   position: absolute;
-  top: 90px;          /* ปรับตำแหน่งบน */
-  left: 210px;         /* ปรับตำแหน่งซ้าย */
+  top: 90px;          
+  left: 210px;         
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -887,7 +828,7 @@ font-size: 14px;
 }
 
 #Meter_Pic img {
-  max-width: 120px;    /* ปรับสเกลให้พอดีกับ container */
+  max-width: 120px;    
   height: auto;
   border-radius: 7px;
   align-items: center;
@@ -905,22 +846,21 @@ font-size: 14px;
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 120%;          /* กว้างกว่ากล่อง */
+  width: 120%;          
   height: 120%;
   transform: translate(-50%, -50%);
-  border-radius: 15px;  /* ทำให้โค้งเหมือนกล่อง */
+  border-radius: 15px;  
   background: radial-gradient(
     circle,
-    rgba(245, 173, 4, 0.881) 0%,   /* เขียว */
+    rgba(245, 173, 4, 0.881) 0%,   
     rgba(0,255,0,0) 80%
   );
    
-  filter: blur(40px);       /* ทำให้กระจาย */
-  z-index: -1;              /* อยู่หลังกล่อง */
-  pointer-events: none;     /* ไม่รบกวนการคลิก */
+  filter: blur(40px);       
+  z-index: -1;             
+  pointer-events: none;     
 }
 
-/* Glow แสงหลอดไฟ */
 #Main_Picinfo .glow {
   position: absolute;
   top: 25%;
@@ -965,12 +905,8 @@ font-size: 14px;
   color: #000;
 }
 
-/* ================= Check-in Status ================= */
-/* (removed - no longer used) */
 
 /* ================= Energy Day/Night Chart ================= */
-/* Uses Realtime_Container as wrapper */
-
 .energy-chart-header {
   display: flex;
   align-items: center;
@@ -979,8 +915,6 @@ font-size: 14px;
   margin-bottom: 6px;
   padding: 3px 0;
 }
-
-/* ปุ่ม < > สไตล์เดียวกับ PickDate ด้านบน */
 .energy-chart-nav {
   color: #fff;
   font-weight: bold;
@@ -1008,7 +942,6 @@ font-size: 14px;
   background: #5a4e08;
 }
 
-/* ช่องวันที่ สไตล์เดียวกับ PickDate ด้านบน */
 .energy-chart-title {
   font-size: 11px;
   font-weight: bold;
@@ -1114,7 +1047,6 @@ font-size: 14px;
   transform: scale(1.03);
 }
 
-/* Realtime pulse animation for today's circle */
 .bill-compare-circle--realtime {
   animation: realtimePulse 2s ease-in-out infinite;
   position: relative;
@@ -1209,29 +1141,28 @@ font-size: 14px;
 
 #floor1_Text {
   position: absolute;
-  top: -3px;                 /* อยู่บนพื้นขาว */
-  left: 93%;              /* กึ่งกลางแนวนอน */
+  top: -3px;                
+  left: 93%;              
   transform: translateX(-50%);
   font-weight: bold;
-  color: #000;            /* สีตัวอักษร */
-  line-height: 20px;      /* ให้ตัวเลขอยู่กึ่งกลางสูง bar */
-  pointer-events: none;   /* คลิกไม่ไปโดน text */
-  z-index: 2;             /* อยู่เหนือ bar */
-  font-size: 8px;   /* ปรับเป็นขนาดที่ต้องการ */
-  color: #000;       /* สีตัวอักษร */
+  color: #000;            
+  line-height: 20px;      
+  pointer-events: none;   
+  z-index: 2;           
+  font-size: 8px;   
+  color: #000;     
 
 
 }
 
 #floor1,
 #floor2 {
-  bottom: auto;           /* ยกเลิก bottom */
+  bottom: auto;           
   margin-left: -60px;
   transform: none;   
-  font-size: 10px;  /* ปรับขนาดตัวเลขตามต้องการ */
-  font-weight: bold; /* หนาขึ้นถ้าต้องการ */
+  font-size: 10px;  
+  font-weight: bold;
   color: #0e0e0e
-     /* ยกเลิก translate */
 }
 
 
@@ -1246,8 +1177,8 @@ font-size: 14px;
 
 .floor-wrapper {
   display: flex;
-  align-items: center;  /* ให้ bar และชื่ออยู่แนวเดียวกัน */
-  gap: 60px;            /* ระยะระหว่างชื่อกับ bar */
+  align-items: center; 
+  gap: 60px;            
   margin-right: 95px;
 }
 
@@ -1270,7 +1201,6 @@ font-size: 14px;
   margin-left: -130px;
   margin-top: 40px;
 
-  /* ขอบนอก + gradient */
   border-radius: 50%;
   background: radial-gradient(
     circle at 30% 30%, 
@@ -1281,14 +1211,12 @@ font-size: 14px;
   );
   border: 4px solid #74640a;
 
-  /* เงา inset + glow */
   box-shadow:
     inset 0 0 8px rgba(0,0,0,0.15),
     1px 1px 0 #000,
     -12px 4px #3b3305,
 }
 
-/* Canvas ให้เต็ม container และเป็นวงกลม */
 #Total_Bar canvas {
   width: 100% ;
   height: 100% ;
@@ -1296,7 +1224,6 @@ font-size: 14px;
   background: transparent;
 }
 
-/* ตัวเลขตรงกลาง */
 #Total_Bar_Text {
   position: absolute;
   top: 50%;
@@ -1310,23 +1237,20 @@ font-size: 14px;
 }
 
 
-  
-
-
 #Bar_Bg {
-  position: absolute;        /* วางทับหรือแยกจาก flow */
-  right: 65px;              /* ปรับตำแหน่งขวา */
-  top: 40%;                  /* กึ่งกลางแนวตั้ง */
-  transform: translateY(-50%); /* กึ่งกลางแนวตั้ง */
-  width: 86px;               /* ปรับความกว้าง */
-  height: 192px;             /* ปรับความสูง */
-  z-index: 1;                /* อยู่ใต้ Total_Bar */
+  position: absolute;        
+  right: 65px;              
+  top: 40%;                 
+  transform: translateY(-50%); 
+  width: 86px;             
+  height: 192px;             
+  z-index: 1;                
 }
 
 #Bar_Bg img {
-  width: 100%;               /* ให้รูปเต็ม div */
-  height: 100%;              /* ให้รูปเต็ม div */
-  object-fit: cover;         /* ครอบเต็มพื้นที่ */
+  width: 100%;               
+  height: 100%;              
+  object-fit: cover;         
   border-radius: 10px;
 }
 .Marker {
@@ -1344,11 +1268,10 @@ font-size: 14px;
   font-size: 8px;
 }
 
-/* Marker1: เว้นตัวเลขบนเส้น */
 #marker1 {
   top: 50%;
   right: 215px;
-  flex-direction: column;   /* ตัวเลขบนเส้น */
+  flex-direction: column;   
   align-items: center;
   text-align: center;
 }
@@ -1360,10 +1283,8 @@ font-size: 14px;
   height: 2px;       
   background-color: #100f0f;
   border-radius: 10px;
-  margin-top: 10px;   /* เว้นระยะตัวเลข */
+  margin-top: 10px;   
 }
-
-/* Marker2 และ Marker3: ใช้แบบปกติ ไม่เว้น */
 #marker2 { top: 65%; right: 215px; }
 #marker3 { bottom: 65%; right: 215px; }
 
@@ -1441,7 +1362,6 @@ font-size: 14px;
   50%      { opacity: 1; transform: translateY(3px); }
 }
 
-/* CCTV Camera Icon */
 .cctv-status {
   display: flex;
   flex-direction: column;
@@ -1473,7 +1393,6 @@ font-size: 14px;
   50%      { opacity: 0.3; }
 }
 
-/* CCTV Popup */
 .cctv-popup-wrap {
   display: none;
   position: fixed;
@@ -1564,11 +1483,10 @@ font-size: 14px;
 .Realtime_kW {
   position: absolute;
   right: 8px;
-  bottom: 6.5px;   /* วางห่างจากขอบล่าง */
+  bottom: 6.5px;  
   width: 65px;
   height: 50px;
 
-  /* Gradient background แทนรูป */
   background: linear-gradient(
     180deg,
     #f8f6f0 0%,
@@ -1577,22 +1495,18 @@ font-size: 14px;
     #f5f0e5 100%
   );
 
-  /* ขอบโค้ง + ความหนาและสี */
   border-radius: 10px;
   border: 4px solid #74640a; 
 
-  /* เงา */
   box-shadow: 
     1px 1px 0 #000,
     -4px 4px #3b3305,
     0 0 15px rgba(255, 230, 160, 0.55);
 
-  /* Layout */
   display: flex;
   justify-content: center;
   align-items: center;
 
-  /* ข้อความ */
   font-size: 14px;
   color: #100f0f;
   font-weight: bold;
@@ -1601,7 +1515,6 @@ font-size: 14px;
     0 -1px 0 rgba(0, 0, 0, 0.1),
     1px 2px 4px rgba(0,0,0,0.6);
 
-  /* Animation / Transition */
   transform: translateZ(0);
   transition: all 0.3s ease;
 }
@@ -1624,7 +1537,7 @@ font-size: 14px;
   font-size: 18px;
   text-align: center;
   position: relative;
-  top: 20px;      /* ขยับลง 20px จากตำแหน่งปกติ */
+  top: 20px;      
   cursor: pointer;
   user-select: none;
   color: #fff;
@@ -1635,7 +1548,6 @@ font-size: 14px;
   gap: 28px;
 }
 
-/* ตัว "<" และ ">" แยกออกมาให้ขยับเล็กน้อย */
 #PickDate span {
   margin: 0 20px;
    z-index: 1001;
@@ -1649,12 +1561,11 @@ font-size: 14px;
   border-radius: 8px;
   padding: 8px 14px;
   box-shadow: inset 0 0 5px rgba(0,0,0,0.15);
-  margin-top: 15px; /* ระยะห่างจากวงกลม */
+  margin-top: 15px; 
   text-align: center;
 }
 
-/* CSS popup */
-/* ตัว popup ครอบ */
+
 #DatePopup {
   display: none;          
   position: fixed;        
@@ -1662,24 +1573,23 @@ font-size: 14px;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.5); /* พื้นหลังโปร่งแสง */
+  background: rgba(0,0,0,0.5); 
   display: flex;
   justify-content: center; 
   align-items: center;     
   z-index: 10001;           
 }
 
-/* กล่องเนื้อหา popup */
 #popupContent {
-  background: #fff;         /* พื้นสีขาว */
-  padding: 20px 30px;       /* ระยะขอบ */
-  border-radius: 10px;      /* ขอบมน */
-  max-width: 400px;         /* กว้างสูงสุด */
-  width: 80%;               /* ปรับตามหน้าจอ */
-  max-height: 80%;          /* สูงสุด */
-  overflow-y: auto;         /* เลื่อนถ้าเนื้อหายาว */
+  background: #fff;         
+  padding: 20px 30px;     
+  border-radius: 10px;      
+  max-width: 400px;         
+  width: 80%;              
+  max-height: 80%;         
+  overflow-y: auto;        
   text-align: center;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.3); /* เงา */
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
 }
 
 .popup-content {
@@ -1814,11 +1724,6 @@ font-size: 14px;
     0 0 15px rgba(255, 230, 160, 0.55);
 }
 
-
-/* เพิ่ม z-index ให้ container */
-
-
-
 #weather {
   display: flex;
   align-items: center;
@@ -1826,9 +1731,9 @@ font-size: 14px;
   font-size: 18px;
   font-weight: bold;
   margin-top: -5px;
-  position: relative;      /* ⬅️ เพิ่มบรรทัดนี้ */
+  position: relative;     
   left: -10px; 
-  bottom: 3px;           /* ⬅️ เพิ่มบรรทัดนี้ (ปรับค่าตามต้องการ) */
+  bottom: 3px;          
 }
 
 #weather-city {
@@ -1853,14 +1758,14 @@ font-size: 14px;
   width: 100%;
   height: 500px;
   width:10px;
-  pointer-events: none; /* ปล่อยให้ click ผ่านไป */
+  pointer-events: none; 
   position: relative;
-  z-index: 1000; /* ต่ำกว่า #PickDate */
+  z-index: 1000; 
   
 }
 /* ===== Calendar Popup ===== */
 #calendarPopup {
-  display: none; /* ซ่อนก่อน */
+  display: none; 
   position: fixed;
   top: 0;
   left: 0;
@@ -1873,18 +1778,25 @@ font-size: 14px;
 }
 
 #calendarPopup.active {
-  display: flex; /* โชว์ popup */
+  display: flex; 
 }
 
 #calendar {
-  width: 1000px;
-  height: 800px;
+  width: min(95vw, 350px);
+  height: 500px;
+  max-height: 82vh;
   margin: 20px auto;
-  padding: 20px;
+  padding: 10px;
   border-radius: 16px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   overflow: hidden;
   background: linear-gradient(to bottom, #ebd09e 0%, #251f03 100%);
+}
+
+.fc .fc-scrollgrid,
+.fc .fc-daygrid-body,
+.fc .fc-scrollgrid-sync-table {
+  width: 100% !important;
 }
 
 /* ===== Popup Content ===== */
@@ -1924,29 +1836,21 @@ font-size: 14px;
 
 /* ===== Header Title ===== */
 .fc .fc-toolbar-title {
-  
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #000;
-  width: 250px;
-  height: 50px;
-  border-radius: 6px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 5px;
-  background: linear-gradient(
-    180deg,
-    #f8f6f0 0%,
-    #fffef8 45%,
-    #fff8e8 55%,
-    #f5f0e5 100%
-  );
-  box-shadow: 1px 1px 0 #000, -8px 6px #3b3305, 0 0 20px rgba(255, 230, 160, 0.55);
-  text-shadow: 0 1px 0 rgba(255,255,255,0.3), 0 -1px 0 rgba(0,0,0,0.1);
+    font-size: 12px;
+    font-weight: bold;
+    color: #000;
+    width: 100px;
+    height: 40px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+    background: linear-gradient(180deg, #f8f6f0 0%, #fffef8 45%, #fff8e8 55%, #f5f0e5 100%);
+    box-shadow: 1px 1px 0 #000, -8px 6px #3b3305, 0 0 20px rgba(255, 230, 160, 0.55);
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3), 0 -1px 0 rgba(0, 0, 0, 0.1);
 }
 
-/* ===== Buttons ===== */
 .fc .fc-button, .fc .fc-button-primary {
   background: linear-gradient(
     180deg,
@@ -1985,10 +1889,10 @@ font-size: 14px;
 }
 
 .fc-daygrid-day {
-  min-height: 120px;
-  max-height: 120px;
-  width: 100px;
-  padding: 5px;
+  min-height: 50px;
+  max-height: 50px;
+  width: auto;
+  padding: 2px;
   box-sizing: border-box;
   background: linear-gradient(180deg,#f8f6f0 0%,#fffef8 45%,#fff8e8 55%,#f5f0e5 100%);
   border-radius: 0;
@@ -2052,23 +1956,20 @@ font-size: 14px;
 
 /* ===== Column Header ===== */
 .fc .fc-col-header-cell-cushion {
-  width: 90px;
-  font-size: 1rem;
-  font-weight: bold;
-  color: #000;
-  font-family: 'Cinzel', serif;
-  text-transform: uppercase;
-  margin: 10px 0 10px 25px;
-  background: linear-gradient(
-    180deg,#f8f6f0 0%,#fffef8 45%,#fff8e8 55%,#f5f0e5 100%
-  );
-  border-radius: 6px;
-  box-shadow: 1px 1px 0 #000, -4px 3px #3b3305, 0 0 12px rgba(255, 230, 160, 0.55);
-  text-shadow: 0 1px 0 rgba(255,255,255,0.3),0 -1px 0 rgba(0,0,0,0.1);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  
+  font-size: 10px;
+    font-weight: bold;
+    color: #000;
+    font-family: 'Cinzel', serif;
+    text-transform: uppercase;
+  margin: 0;
+  padding: 2px 0;
+    background: linear-gradient(180deg, #f8f6f0 0%, #fffef8 45%, #fff8e8 55%, #f5f0e5 100%);
+    border-radius: 6px;
+  box-shadow: 0 0 0 #000, 0 0 0 #3b3305, 0 0 6px rgba(255, 230, 160, 0.35);
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3), 0 -1px 0 rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* =================diff================= */
@@ -4001,14 +3902,13 @@ font-size: 14px;
   min-height: 100px;
 }
 
-@media screen and (min-width: 768px) and (max-width: 1024px) {
+@media screen and (min-width: 1000px) and (max-width: 1024px) {
   html {
     zoom: 2;                
   }
 
 }
 @media screen and (max-width: 380px) {
-
 .Main_Container,.Main_Container2{
   max-width: 340px;
 }
@@ -4017,10 +3917,5 @@ font-size: 14px;
 }
 .Top_Container{
   max-width: 340px;
-
-}
-.ClientName_Container{
-  font-size: 12px;
-  padding: auto 20px;
 }
 }
