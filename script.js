@@ -599,6 +599,12 @@ document.addEventListener('DOMContentLoaded', async function() {
       energyChartInstance.destroy();
     }
 
+    const rootStyles = getComputedStyle(document.documentElement);
+    const dayBarColor = rootStyles.getPropertyValue('--energy-day-bar').trim() || 'rgba(245, 166, 35, 0.85)';
+    const dayBorderColor = rootStyles.getPropertyValue('--energy-day-border').trim() || '#d4920a';
+    const nightBarColor = rootStyles.getPropertyValue('--energy-night-bar').trim() || 'rgba(74, 111, 165, 0.85)';
+    const nightBorderColor = rootStyles.getPropertyValue('--energy-night-border').trim() || '#35577a';
+
     const ctx = canvas.getContext('2d');
     energyChartInstance = new Chart(ctx, {
       type: 'bar',
@@ -608,8 +614,8 @@ document.addEventListener('DOMContentLoaded', async function() {
           {
             label: 'กลางวัน',
             data: dayCosts,
-            backgroundColor: 'rgba(245, 166, 35, 0.85)',
-            borderColor: '#d4920a',
+            backgroundColor: dayBarColor,
+            borderColor: dayBorderColor,
             borderWidth: 1,
             borderRadius: 3,
             barPercentage: 0.7,
@@ -618,8 +624,8 @@ document.addEventListener('DOMContentLoaded', async function() {
           {
             label: 'กลางคืน',
             data: nightCosts,
-            backgroundColor: 'rgba(74, 111, 165, 0.85)',
-            borderColor: '#35577a',
+            backgroundColor: nightBarColor,
+            borderColor: nightBorderColor,
             borderWidth: 1,
             borderRadius: 3,
             barPercentage: 0.7,
@@ -1687,9 +1693,9 @@ initializeChart();
           const energy = (props.energy !== null && props.energy !== undefined) ? Number(props.energy).toFixed(2) + ' Unit' : '';
 
           // Title may still be used for the event header; we display bill first then energy
-          const titleHtml = arg.event.title ? `<div style="font-size:11px; font-weight:700; color:#2c1810;">${arg.event.title}</div>` : '';
-          const billHtml = bill ? `<div style="font-size:12px; font-weight:800; color:#5a2b00; margin-top:4px;">${bill}</div>` : '';
-          const energyHtml = energy ? `<div style="font-size:11px; color:#333;">${energy}</div>` : '';
+          const titleHtml = arg.event.title ? `<div class="calendar-event-title">${arg.event.title}</div>` : '';
+          const billHtml = bill ? `<div class="calendar-event-bill">${bill}</div>` : '';
+          const energyHtml = energy ? `<div class="calendar-event-energy">${energy}</div>` : '';
 
           return { html: `${titleHtml}${billHtml}${energyHtml}` };
         } catch (e) {
@@ -1772,12 +1778,20 @@ initializeChart();
   }
 
   // ================= Room Booking =================
-  const roomBookingIcon = document.querySelector("#RoomBooking_icon img");
+  const roomBookingIconWrap = document.getElementById("RoomBooking_icon");
+  const roomBookingIconImg = document.querySelector("#RoomBooking_icon img");
   const roomBookingPopup = document.getElementById("roomBookingPopup");
   const roomBookingTitle = document.getElementById("roomBookingTitle");
   const confirmBookingBtn = document.getElementById("confirmBooking");
   const cancelBookingBtn = document.getElementById("cancelBooking");
   const bookingOverlay = document.getElementById("overlay");
+
+  function getCurrentRoomName() {
+    const roomLabel = document.getElementById("Total_Bar_Label");
+    const selectedOption = document.querySelector('#roomDropdown .room-option.selected');
+    const fallbackRoom = roomLabel?.firstChild?.textContent?.trim();
+    return selectedOption?.getAttribute('data-room') || fallbackRoom || "ไม่ระบุห้อง";
+  }
   
   // Bookings data cache
   let bookingsDataByDate = {};
@@ -1829,7 +1843,7 @@ initializeChart();
     
     // Set room name in header
     const selectedOption = document.querySelector('#roomDropdown .room-option.selected');
-    const roomName = selectedOption ? selectedOption.getAttribute('data-room') : (roomLabel ? roomLabel.childNodes[0].textContent.trim() : '');
+    const roomName = selectedOption?.getAttribute('data-room') || roomLabel?.firstChild?.textContent?.trim() || '';
     if (scheduleRoomName) {
       scheduleRoomName.textContent = roomName;
     }
@@ -1920,27 +1934,36 @@ initializeChart();
     });
   }
 
-  if (roomBookingIcon && roomBookingPopup) {
-    roomBookingIcon.addEventListener("click", () => {
-      // Get room name from selected dropdown option
-      const roomLabel = document.getElementById("Total_Bar_Label");
-      const selectedOption = document.querySelector('#roomDropdown .room-option.selected');
-      const roomName = selectedOption ? selectedOption.getAttribute('data-room') : (roomLabel ? roomLabel.childNodes[0].textContent.trim() : "ไม่ระบุห้อง");
+  if ((roomBookingIconWrap || roomBookingIconImg) && roomBookingPopup) {
+    const openRoomBookingPopup = (e) => {
+      if (e) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+      const roomName = getCurrentRoomName();
       if (roomBookingTitle) {
         roomBookingTitle.textContent = `จองห้อง: ${roomName}`;
       }
-      // Set default date to today
+
       const bookingDateInput = document.getElementById("bookingDate");
       const todayDate = new Date().toISOString().split('T')[0];
       if (bookingDateInput) {
         bookingDateInput.value = todayDate;
       }
-      // Generate schedule table for today
+
       generateScheduleTable(todayDate);
-      
       roomBookingPopup.style.display = "flex";
       if (bookingOverlay) bookingOverlay.style.display = "block";
-    });
+    };
+
+    if (roomBookingIconWrap) {
+      roomBookingIconWrap.addEventListener("click", openRoomBookingPopup);
+      roomBookingIconWrap.addEventListener("touchstart", openRoomBookingPopup, { passive: false });
+    }
+    if (roomBookingIconImg) {
+      roomBookingIconImg.addEventListener("click", openRoomBookingPopup);
+      roomBookingIconImg.addEventListener("touchstart", openRoomBookingPopup, { passive: false });
+    }
   }
 
   if (cancelBookingBtn) {
@@ -1957,8 +1980,7 @@ initializeChart();
       const endTime = document.getElementById("bookingEndTime")?.value;
       const bookerName = document.getElementById("bookerName")?.value;
       const purpose = document.getElementById("bookingPurpose")?.value;
-      const selectedOption = document.querySelector('#roomDropdown .room-option.selected');
-      const roomName = selectedOption ? selectedOption.getAttribute('data-room') : "ไม่ระบุห้อง";
+      const roomName = getCurrentRoomName();
       
       if (!bookingDate || !bookerName) {
         alert("กรุณากรอกวันที่และชื่อผู้จอง");

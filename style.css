@@ -617,11 +617,15 @@ font-size: 14px;
   position: absolute;
   bottom: 0px;
   right: 0px;
+  z-index: 3000;
+  pointer-events: auto;
 }
 #RoomBooking_icon img {
   width: 60px;
   height: 30px;
   cursor: pointer;
+  display: block;
+  pointer-events: auto;
 }
 
 #Calendar_icon,
@@ -1874,8 +1878,8 @@ font-size: 14px;
 }
 
 .fc-daygrid-day {
-  min-height: 50px;
-  max-height: 50px;
+  min-height: 20px;
+  max-height: 40px;
   width: auto;
   padding: 2px;
   box-sizing: border-box;
@@ -1920,8 +1924,8 @@ font-size: 14px;
 }
 
 .fc-event .fc-event-title {
-  font-size: 11px ;
-  line-height: 1.2 ;
+  font-size: 10px ;
+  line-height: 1 ;
   margin: 2px 0 ;
   text-align: center ;
   white-space: normal ;
@@ -3911,3 +3915,42 @@ font-size: 14px;
   max-width: 340px;
 }
 }
+
+#calendar .fc-daygrid-day {
+  min-height: 20px !important;
+  height: 40px !important;
+  max-height: 40px !important;
+}
+
+#calendar .fc-daygrid-day-frame {
+  min-height: 0 !important;
+  padding: 1px !important;
+}
+
+#calendar .fc-daygrid-day-number {
+  font-size: 0.82rem !important;
+  margin-bottom: 2px !important;
+  padding-right: 4px !important;
+}
+
+#calendar .calendar-event-title {
+  font-size: 9px;
+  font-weight: 700;
+  color: #2c1810;
+  line-height: 1;
+}
+
+#calendar .calendar-event-bill {
+  font-size: 10px;
+  font-weight: 800;
+  color: #5a2b00;
+  margin-top: 2px;
+  line-height: 1;
+}
+
+#calendar .calendar-event-energy {
+  font-size: 9px;
+  color: #333;
+  line-height: 1;
+}
+
