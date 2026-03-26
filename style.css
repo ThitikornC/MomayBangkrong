@@ -82,6 +82,10 @@ body::after {
   box-sizing: border-box ;
   max-height: auto ;
 } 
+
+
+
+
 /* ================= กล่อง Client และ Electrical ================= */
 .ClientName_Container {
   width: 180px;  
@@ -216,6 +220,8 @@ body::after {
 }
 
 #Total_Bar_Label {
+
+  
   display: inline-block;
   padding: 8px 16px;
   margin-top: -25px;
@@ -230,7 +236,7 @@ body::after {
   );
   color: #74640a;
   font-weight: bold;
-  font-size: 14px;
+  font-size: 12px;
   text-align: center;
   z-index: 51;
   box-sizing: border-box;
@@ -411,27 +417,8 @@ body::after {
   align-items: center;      
 }
 
-.Bottom_info img {
-  max-width: 100%;      
-  height: auto;         
-  display: block;
-}
-
 .Bottom_info .Version {
   margin-top: 12px;
-}
-
-/* ================= Navbar ================= */
-.Navbar {
-  width: 100%;
-  max-width: 400px;
-  margin: 0 auto 20px auto;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding: 10px 20px;
-  border-radius: 10px;
-  box-sizing: border-box;
 }
 
 .Todayinfo {
@@ -442,8 +429,6 @@ body::after {
   position: relative;
   left: 10px; 
 }
-
-/* วันที่ซ้าย */
 #Date_icon {
   position: relative;
   width: 82%;
@@ -3905,6 +3890,13 @@ font-size: 14px;
 @media screen and (min-width: 1000px) and (max-width: 1024px) {
   html {
     zoom: 2;                
+  }
+
+  #calendarPopup #calendar {
+    zoom: 0.9;
+  }
+   .fc .fc-scroller-harness {
+    zoom: 0.56;
   }
 
 }
